@@ -1,11 +1,11 @@
 import { lazy, Suspense } from "react";
 
-const Todos = lazy(() => import("./components/Todos.jsx"));
-const Register = lazy(() => import("./components/Register.jsx"));
-const RouteGuard = lazy(() => import("./components/RouteGuard.jsx"));
-const UserInfo = lazy(() => import("./components/UserInfo.jsx"));
-const Home = lazy(() => import("./components/Home.jsx"));
-const Login = lazy(() => import("./components/Login.jsx"));
+const Todos = lazy(() => import("./pages/Todos.jsx"));
+const Register = lazy(() => import("./pages/Register.jsx"));
+const RouteGuard = lazy(() => import("./pages/RouteGuard.jsx"));
+const UserInfo = lazy(() => import("./pages/UserInfo.jsx"));
+const Home = lazy(() => import("./pages/Home.jsx"));
+const Login = lazy(() => import("./pages/Login.jsx"));
 
 import { Routes, Route, Outlet } from "react-router";
 

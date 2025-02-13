@@ -37,7 +37,9 @@ export async function login(req, res, next) {
     user.password
   );
   if (!isPasswordCorrect) return next(createError(400, "Invalid credentials"));
-  const token = jwt.sign({ id: user._id }, process.env.JWT);
+  const token = jwt.sign({ id: user._id }, process.env.JWT, {
+    expiresIn: "3h",
+  });
   console.log("token", token);
   res
     .cookie("access_token", token, {

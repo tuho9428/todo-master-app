@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import toast from "react-hot-toast";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-import EditTodo from "../components/EditTodo";
+import EditTodo from "./EditTodo";
 import Profile from "./Profile";
 import {
   Container,
