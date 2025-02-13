@@ -1,0 +1,20 @@
+@import "tailwindcss";
+
+.icon-hover:hover {
+  cursor: pointer;
+  color: rgb(251, 191, 36);
+}
+
+.btn-hover:hover {
+  filter: brightness(90%);
+}
+
+.element {
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.element:hover {
+  color: #e12214;
+  text-decoration: underline;
+}
