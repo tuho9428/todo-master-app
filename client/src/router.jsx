@@ -7,12 +7,13 @@ const UserInfo = lazy(() => import("./pages/UserInfo.jsx"));
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
 
-import { Routes, Route, Outlet } from "react-router";
+import { Routes, Route, Outlet, Navigate } from "react-router";
 
 function AppRouter() {
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Routes>
+        <Route path="*" element={<Navigate to="/" />} />
         <Route path="/" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
