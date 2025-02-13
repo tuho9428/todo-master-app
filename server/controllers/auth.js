@@ -38,7 +38,7 @@ export async function login(req, res, next) {
   );
   if (!isPasswordCorrect) return next(createError(400, "Invalid credentials"));
   const token = jwt.sign({ id: user._id }, process.env.JWT, {
-    expiresIn: "3h",
+    expiresIn: process.env.JWT_LIFETIME,
   });
   console.log("token", token);
   res
