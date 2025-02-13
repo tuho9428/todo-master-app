@@ -2,7 +2,7 @@ import { lazy, Suspense } from "react";
 
 const Todos = lazy(() => import("./pages/Todos.jsx"));
 const Register = lazy(() => import("./pages/Register.jsx"));
-const RouteGuard = lazy(() => import("./pages/RouteGuard.jsx"));
+const RouteGuard = lazy(() => import("./components/RouteGuard.jsx"));
 const UserInfo = lazy(() => import("./pages/UserInfo.jsx"));
 const Home = lazy(() => import("./pages/Home.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
