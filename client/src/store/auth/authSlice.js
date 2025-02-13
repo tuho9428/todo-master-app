@@ -29,7 +29,7 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(registerUserThunk.fulfilled, (state, action) => {
+      .addCase(registerUserThunk.fulfilled, (state) => {
         state.loading = false;
         state.isRegistered = true;
       })
@@ -41,7 +41,7 @@ const authSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(loginUserThunk.fulfilled, (state, action) => {
+      .addCase(loginUserThunk.fulfilled, (state) => {
         state.loading = false;
         state.isLoggedIn = true;
       })
@@ -49,7 +49,7 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(logoutUserThunk.fulfilled, (state) => {
+      .addCase(logoutUserThunk.fulfilled, (_) => {
         return authInitialState; // Reset to initial state
       })
       .addCase(logoutUserThunk.rejected, (state, action) => {

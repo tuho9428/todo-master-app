@@ -1,15 +1,11 @@
 import React, { useEffect } from "react";
 import toast from "react-hot-toast";
-import {
-  Container,
-  Typography,
-  Card,
-  CardContent,
-  Skeleton,
-} from "@mui/material";
+import { Container, Typography, Card, CardContent } from "@mui/material";
 import Profile from "./Profile";
 import { useDispatch, useSelector } from "react-redux";
 import { getUserThunk } from "../store/user/userThunk";
+import LoadingSkeleton from "../components/Loading/LoadingSkeleton.jsx";
+import ErrorBlock from "../components/Error/ErrorBlock.jsx";
 
 const UserInfo = () => {
   const dispatch = useDispatch();
@@ -20,37 +16,12 @@ const UserInfo = () => {
   }, [dispatch]);
 
   if (loading) {
-    return (
-      <Container maxWidth="sm" className="pt-8">
-        <Card className="shadow-lg rounded-lg">
-          <CardContent className="space-y-4">
-            <div className="flex justify-end">
-              <Skeleton variant="circular" width={40} height={40} />
-            </div>
-            <Skeleton variant="text" className="h-12" />
-            <Skeleton variant="rectangular" className="h-32" />
-          </CardContent>
-        </Card>
-      </Container>
-    );
+    return <LoadingSkeleton />;
   }
 
   if (error) {
     toast.error(error);
-    return (
-      <Container maxWidth="sm" className="pt-8">
-        <Card className="bg-red-50 shadow-lg rounded-lg">
-          <CardContent>
-            <Typography variant="h5" className="text-red-600 text-center">
-              Error fetching user data
-            </Typography>
-            <Typography className="text-red-500 text-center mt-2">
-              {error}
-            </Typography>
-          </CardContent>
-        </Card>
-      </Container>
-    );
+    return <ErrorBlock title="Error fetching user data" errorMessage={error} />;
   }
 
   return (
