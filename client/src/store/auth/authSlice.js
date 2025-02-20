@@ -3,6 +3,7 @@ import {
   registerUserThunk,
   loginUserThunk,
   logoutUserThunk,
+  verifyUserThunk,
 } from "./authThunk";
 
 const authInitialState = {
@@ -53,6 +54,19 @@ const authSlice = createSlice({
         return authInitialState; // Reset to initial state
       })
       .addCase(logoutUserThunk.rejected, (state, action) => {
+        state.error = action.payload;
+      })
+      // verifyUserThunk
+      .addCase(verifyUserThunk.pending, (state) => {
+        state.loading = true;
+      })
+      .addCase(verifyUserThunk.fulfilled, (state) => {
+        state.loading = false;
+        state.isLoggedIn = true;
+      })
+      .addCase(verifyUserThunk.rejected, (state, action) => {
+        state.loading = false;
+        state.isLoggedIn = false;
         state.error = action.payload;
       });
   },

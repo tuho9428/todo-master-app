@@ -63,3 +63,21 @@ export const logoutUserThunk = createAsyncThunk(
     }
   }
 );
+
+export const verifyUserThunk = createAsyncThunk(
+  "auth/verifyUser",
+  async (_, { rejectWithValue }) => {
+    try {
+      const res = await fetch("http://localhost:3000/api/auth/verify", {
+        method: "GET",
+        credentials: "include",
+      });
+      if (!res.ok) {
+        return rejectWithValue("Verify failed. Please try again.");
+      }
+      return {};
+    } catch (error) {
+      return rejectWithValue("Something went wrong");
+    }
+  }
+);

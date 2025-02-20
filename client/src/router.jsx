@@ -1,4 +1,5 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
+import { useDispatch } from "react-redux";
 
 const Todos = lazy(() => import("./pages/Todos.jsx"));
 const Register = lazy(() => import("./pages/Register.jsx"));
@@ -8,8 +9,15 @@ const Home = lazy(() => import("./pages/Home.jsx"));
 const Login = lazy(() => import("./pages/Login.jsx"));
 
 import { Routes, Route, Outlet, Navigate } from "react-router";
+import { verifyUserThunk } from "./store/auth/authThunk.js";
 
 function AppRouter() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(verifyUserThunk()); // Check token on app load
+  }, [dispatch]);
+
   return (
     <Suspense fallback={<p>Loading...</p>}>
       <Routes>
